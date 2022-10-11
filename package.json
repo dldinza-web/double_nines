@@ -16,7 +16,8 @@
     "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
     "lint": "eslint app/javascript/**/*.ts[x]",
     "app": "./bin/dev",
-    "test": "jest"
+    "test-fronted": "jest",
+    "test-backend": "bundle exec rspec -f documentation"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.1",
