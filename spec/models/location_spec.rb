@@ -14,6 +14,19 @@ RSpec.describe Location, type: :model do
 
       expect(location.address_2).to be_present
     end
+
+    it "returns full address" do
+      location = create(:location)
+
+      expect(location.address).to eq [
+        location.address_1,
+        location.address_2,
+        location.city,
+        location.state,
+        location.zip_code,
+        location.country_code,
+      ].compact.join(', ')
+    end
   end
 
   context "with invalid data" do

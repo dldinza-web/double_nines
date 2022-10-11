@@ -15,6 +15,10 @@ RSpec.describe Person, type: :model do
 
       expect(person.user).to be_a User
       expect(person.user).to be_persisted
+
+      another_person = create(:person, :with_user)
+      expect(another_person).to be_persisted
+      expect(another_person.user).to be_a User
     end
 
     it "has many reservations" do
@@ -29,6 +33,13 @@ RSpec.describe Person, type: :model do
       2.times { create(:reservation, person: person) }
 
       expect(person.vehicles.count).to eq 2
+    end
+
+    it "returns full name" do
+      expect(person.full_name).to eq [
+        person.first_name,
+        person.last_name
+      ].compact.join(' ')
     end
   end
 

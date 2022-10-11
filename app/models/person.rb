@@ -5,4 +5,10 @@ class Person < ApplicationRecord
   has_one :user
   has_many :reservations
   has_many :vehicles, through: :reservations
+
+  def full_name
+    [first_name, last_name]
+      .compact
+      .join(' ')
+  end
 end

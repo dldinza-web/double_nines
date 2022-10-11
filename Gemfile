@@ -71,3 +71,6 @@ end
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+
+gem "graphql", "~> 2.0"
+gem "graphiql-rails", group: :development

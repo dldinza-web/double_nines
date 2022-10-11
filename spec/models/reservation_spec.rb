@@ -14,12 +14,10 @@ RSpec.describe Reservation, type: :model do
       expect(reservation.location_from).to be_a Location
       expect(reservation.location_to).to be_a Location
     end
-
-
   end
 
   context "with invalid data" do
-    it "validates" do
+    it "validates presence" do
       item = build(:reservation,
         person: nil,
         vehicle: nil,
@@ -36,6 +34,34 @@ RSpec.describe Reservation, type: :model do
         "Person must exist",
         "Vehicle must exist"
       ].sort
+    end
+
+    it "validate uniqueness" do
+      reservation = create(:reservation)
+
+      attributes = reservation
+        .attributes
+        .with_indifferent_access
+        .except(:id, :created_at, :updated_at)
+
+      another = Reservation.new(attributes)
+
+      expect(another.save).to be_falsy
+
+      expect(another.errors.full_messages.sort).to eq [
+        "Person . Another reservation exists. It should't be repeated."
+      ]
+    end
+
+    it "validates origin and destination are different" do
+      location = create(:location)
+
+      reservation = build(:reservation, location_from: location, location_to: location)
+
+      expect(reservation).not_to be_valid
+      expect(reservation.errors.full_messages.sort).to eq [
+        "Location from must be different to Location to."
+      ]
     end
   end
 end

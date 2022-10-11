@@ -1,5 +1,13 @@
 class Reservation < ApplicationRecord
   validates :departure_time, presence: true
+  validates :person, uniqueness: {
+    scope: [:vehicle_id, :location_from, :location_to, :departure_time],
+    message: ". Another reservation exists. It should't be repeated."
+  }
+  validates :location_from, comparison: {
+    other_than: :location_to,
+    message: "must be different to Location to."
+  }, if: -> { location_from.present? && location_to.present? }
 
   belongs_to :person
   belongs_to :vehicle
