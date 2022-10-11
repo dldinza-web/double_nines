@@ -1,7 +1,10 @@
 import React from 'react'
+import ReservationsPage from './pages/reservations'
 
 const App = () => {
-  return (<div>Hello Ruby 7 + React!! + Testing + Ready!</div>)
+  return (
+    <ReservationsPage />
+  )
 }
 
 export default App
