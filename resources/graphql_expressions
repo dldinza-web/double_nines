@@ -1,19 +1,19 @@
 {
+  people {
+  	id
+    firstName
+    lastName
+    fullName
+	}
+}
+
+{
   vehicles {
   	id
     make
     model
     vin
     color
-	}
-}
-
-{
-  people {
-  	id
-    firstName
-    lastName
-    fullName
 	}
 }
 
@@ -58,5 +58,169 @@
     locationTo {
       address
     }
+  }
+}
+
+query getReservation($reservationId: Int!) {
+  reservation(reservationId: $reservationId) {
+    id
+    person {
+      fullName
+    },
+    vehicle {
+      vin
+    },
+    locationFrom {
+      address
+    },
+    departureTime
+    locationTo {
+      address
+    }
+  }
+}
+{
+  "reservationId": 2
+}
+
+mutation {
+  createReservation(
+    input: {
+      personId: 4,
+      vehicleId: 2,
+      locationFromId: 3,
+      departureTime: "2022-10-11T15:57:01Z",
+      locationToId: 2
+    }
+  ) {
+    reservation {
+      id
+      person {
+        fullName
+      },
+      vehicle {
+        vin
+      },
+      locationFrom {
+        address
+      },
+      departureTime
+      locationTo {
+        address
+      }
+    }
+  }
+}
+
+mutation CreateReservation(
+  $personId: ID!,
+  $vehicleId: ID!,
+  $locationFromId: ID!,
+  $departureTime: ISO8601DateTime!,
+  $locationToId: ID!
+) {
+  createReservation(
+    input: {
+      personId: $personId,
+      vehicleId: $vehicleId,
+      locationFromId: $locationFromId,
+      departureTime: $departureTime,
+      locationToId: $locationToId
+    }
+  ) {
+    reservation {
+      id
+      person {
+        fullName
+      },
+      vehicle {
+        vin
+      },
+      locationFrom {
+        address
+      },
+      departureTime
+      locationTo {
+        address
+      }
+    }
+  }
+}
+{
+  "personId": 4,
+  "vehicleId": 2,
+  "locationFromId": 3,
+  "departureTime": "2022-10-11T15:57:01Z",
+  "locationToId": 2
+}
+
+
+mutation UpdateReservation(
+  $id: ID!,
+  $personId: ID!,
+  $vehicleId: ID!,
+  $locationFromId: ID!,
+  $departureTime: ISO8601DateTime!,
+  $locationToId: ID!
+) {
+  updateReservation(
+    input: {
+      id: $id,
+      personId: $personId,
+      vehicleId: $vehicleId,
+      locationFromId: $locationFromId,
+      departureTime: $departureTime,
+      locationToId: $locationToId
+    }
+  ) {
+    reservation {
+      id
+      person {
+        id
+        fullName
+      },
+      vehicle {
+        id
+        vin
+      },
+      locationFrom {
+        id
+        address
+      },
+      departureTime
+      locationTo {
+        address
+      }
+    }
+  }
+}
+{
+  "id": 49,
+  "personId": 4,
+  "vehicleId": 2,
+  "locationFromId": 3,
+  "departureTime": "2022-10-11T15:57:01Z",
+  "locationToId": 2
+}
+
+
+before
+{
+  "id": "49",
+  "person": {
+    "id": "3",
+    "fullName": "Yanira Keeling"
+  },
+  "vehicle": {
+    "id": "1",
+    "vin": "E8MLR6P6PPP979797"
+  },
+  "locationFrom": {
+    "id": "4",
+    "address": "9495 Kirlin Cape, Port Deangelo, Pennsylvania, 24981, BT"
+  },
+  "departureTime": "2022-10-13T23:04:00Z",
+  "locationTo": {
+    "address": "2176 Schultz Orchard, New Estell, New Hampshire, 94635, BL"
   }
 }

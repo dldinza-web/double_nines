@@ -37,9 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_212000) do
     t.integer "location_to_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"person\", \"vehicle\", \"location_from\", \"location_to\", \"departure_time\"", name: "index_unique_reservation", unique: true
     t.index ["location_from_id"], name: "index_reservations_on_location_from_id"
     t.index ["location_to_id"], name: "index_reservations_on_location_to_id"
+    t.index ["person_id", "vehicle_id", "location_from_id", "location_to_id", "departure_time"], name: "index_unique_reservation", unique: true
     t.index ["person_id"], name: "index_reservations_on_person_id"
     t.index ["vehicle_id"], name: "index_reservations_on_vehicle_id"
   end

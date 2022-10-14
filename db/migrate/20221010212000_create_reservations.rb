@@ -12,10 +12,10 @@ class CreateReservations < ActiveRecord::Migration[7.0]
 
     add_index :reservations,
       [
-        :person,
-        :vehicle,
-        :location_from,
-        :location_to,
+        :person_id,
+        :vehicle_id,
+        :location_from_id,
+        :location_to_id,
         :departure_time
       ],
       unique: true,
