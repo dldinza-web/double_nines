@@ -138,8 +138,8 @@ const ReservationForm = (props: ReservationFormProps) => {
       <FormControl fullWidth>
         <InputLabel id="label-drivers">Drivers</InputLabel>
         <Select
-          labelId="drivers-label"
           id="select-drivers"
+          labelId="drivers-label"
           value={reservation?.personId as string | ''}
           label="Drivers"
           onChange={onSelectDriver}
@@ -155,8 +155,8 @@ const ReservationForm = (props: ReservationFormProps) => {
       <FormControl fullWidth>
         <InputLabel id="label-vehicles">Vehicles</InputLabel>
         <Select
-          labelId="vehicles-label"
           id="select-vehicles"
+          labelId="vehicles-label"
           value={reservation.vehicleId as string | ''}
           label="Vehicles"
           onChange={onSelectVehicle}
@@ -172,8 +172,8 @@ const ReservationForm = (props: ReservationFormProps) => {
       <FormControl fullWidth>
         <InputLabel id="label-location-from">Address From</InputLabel>
         <Select
-          labelId="location-from-label"
           id="select-location-from"
+          labelId="location-from-label"
           value={reservation.locationFromId as string | ''}
           label="Address From"
           onChange={onSelectAddressFrom}
@@ -191,7 +191,9 @@ const ReservationForm = (props: ReservationFormProps) => {
           label="Departure Date and Time"
           value={reservation.departureTime}
           onChange={onChangeDepartureTime}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) =>
+            <TextField id="input-departureTime" {...params} />
+          }
         />
       </FormControl>
 
@@ -227,7 +229,11 @@ const ReservationForm = (props: ReservationFormProps) => {
       <Stack spacing={2} direction="row" justifyContent="flex-end">
         <Button variant="outlined" onClick={onCancelReservation}>Cancel</Button>
 
-        <Button variant="contained" onClick={onSaveReservation}>Save</Button>
+        <Button
+          variant="contained"
+          onClick={onSaveReservation}
+          id="btn-submit"
+        >Save</Button>
       </Stack>
 
     </LocalizationProvider>
