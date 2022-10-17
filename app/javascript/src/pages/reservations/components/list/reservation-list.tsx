@@ -123,7 +123,7 @@ const ReservationList = (props: ReservationListPros) => {
 
       <b>Total: {props.reservations && props.reservations.length}</b>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650 }} aria-label="reservations-table" id="reservations-table" >
           <TableHead>
             <TableRow>
               <TableCell>Driver</TableCell>
@@ -140,9 +140,7 @@ const ReservationList = (props: ReservationListPros) => {
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {row.person.fullName}
-                </TableCell>
+                <TableCell scope="row">{row.person.fullName}</TableCell>
                 <TableCell align="right">{row.vehicle.vin}</TableCell>
                 <TableCell align="right">{row.locationFrom.address}</TableCell>
                 <TableCell align="right">{moment(row.departureTime).format('llll')}</TableCell>

@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 describe('Create Reservations', () => {
-  it('passes', () => {
+  it('inserts parameters and creates', () => {
     cy.visit('/')
 
     cy.selectDropdown('#select-drivers', 'drivers-label')
