@@ -18,4 +18,8 @@ rails db:reset RAILS_ENV=test
 
 echo "\nRunning Unit Tests TDD..."
 sleep 3
-bundle exec rspec -f documentation spec
+npm run test
+
+echo "\nRunning Automation Tests BDD..."
+sleep 3
+npm run it

@@ -39,6 +39,7 @@ const ReservationList = (props: ReservationListPros) => {
       message: 'The reservation has been removed successfully.'
     }])
 
+    setTimeout(() => setMessages([]), 3 * 1000)
     setReservationRemove(null)
 
     props.onAfterRemovingReservation()

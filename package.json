@@ -23,6 +23,7 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "rebuild": "npm run build && npm run build:css && npm run tsc && npm run lint",
     "tsc": "tsc --project tsconfig.json",
     "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
     "lint": "eslint app/javascript/**/*.ts[x]",
@@ -33,8 +34,7 @@
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
     "e2e": "npm run rebuild && start-server-and-test test-env http://localhost:5002 cypress:open",
-    "it": "start-server-and-test test-env http://localhost:5002 cypress:run",
-    "rebuild": "npm run build && npm run build:css && npm run tsc",
+    "it": "npm run rebuild && start-server-and-test test-env http://localhost:5002 cypress:run",
     "start": "./bin/dev"
   },
   "devDependencies": {
