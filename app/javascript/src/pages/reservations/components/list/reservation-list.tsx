@@ -36,7 +36,7 @@ const ReservationList = (props: ReservationListPros) => {
   const onAfterRemovingReservation = () => {
     setMessages([{
       type: 'success',
-      message: 'The reservation has been remove successfully.'
+      message: 'The reservation has been removed successfully.'
     }])
 
     setReservationRemove(null)
@@ -87,6 +87,7 @@ const ReservationList = (props: ReservationListPros) => {
       onClose={() => onCloseDialog(false)}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      data-test-id="dialog-remove-reservation"
     >
       <DialogTitle id="alert-dialog-title">
         {"Delete confirmation"}
@@ -101,13 +102,13 @@ const ReservationList = (props: ReservationListPros) => {
           <p><b>Location To: </b><span>{reservationRemove.locationTo.address}</span></p>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => onCloseDialog(true)} color="error" variant="outlined">Delete</Button>
-        <Button onClick={() => onCloseDialog(false)} variant="outlined">Cancel</Button>
+        <Button data-test-id="btn-delete" onClick={() => onCloseDialog(true)} color="error" variant="outlined">Delete</Button>
+        <Button data-test-id="btn-cancel-delete" onClick={() => onCloseDialog(false)} variant="outlined">Cancel</Button>
       </DialogActions>
     </Dialog>
 
   return (
-    <>
+    <div data-test-id="container-reservation-list">
       {messages.length > 0 &&
         <>
           <Stack sx={{ width: '100%' }} spacing={2}>
@@ -158,7 +159,7 @@ const ReservationList = (props: ReservationListPros) => {
       </TableContainer>
 
       { confirmationDialog }
-    </>
+    </div>
   )
 }
 
