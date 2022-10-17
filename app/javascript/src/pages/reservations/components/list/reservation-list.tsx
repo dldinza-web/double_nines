@@ -147,8 +147,8 @@ const ReservationList = (props: ReservationListPros) => {
                 <TableCell align="right">{row.locationTo.address}</TableCell>
                 <TableCell align="center">
                 <Stack spacing={2} direction="row" onClick={preventDefault}>
-                  <Link href="#" onClick={() => onEdit(row)}>Edit</Link>
-                  <Link href="#" onClick={() => onRemove(row)}>Remove</Link>
+                  <Link href="#" data-test-id="edit-link" onClick={() => onEdit(row)}>Edit</Link>
+                  <Link href="#" data-test-id="remove-link" onClick={() => onRemove(row)}>Remove</Link>
                 </Stack>
                 </TableCell>
               </TableRow>

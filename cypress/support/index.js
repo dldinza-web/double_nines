@@ -24,4 +24,5 @@ import './on-rails'
 beforeEach(() => {
   cy.app('clean')
   cy.exec('rails db:seed RAILS_ENV=test')
+  cy.visit('/')
 })
