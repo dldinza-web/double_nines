@@ -18,7 +18,7 @@ import moment from 'moment';
 import { ApolloError, useMutation } from '@apollo/client';
 import { mutationRemoveReservation } from '../../graphql/mutations';
 import Alert from '@mui/material/Alert';
-import * as Styles from 'src/components/shared/form.styles'
+import * as Styles from '../../../../components/shared/form.styles'
 
 const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
 

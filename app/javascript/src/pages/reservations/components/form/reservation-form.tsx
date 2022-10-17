@@ -128,7 +128,7 @@ const ReservationForm = (props: ReservationFormProps) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
-      <FormControl fullWidth>
+      <FormControl fullWidth data-testid="field-user">
           <b>Created By:</b>
           {!loadingCurrentUser && dataCurrentUser.user.person.fullName}
       </FormControl>
